@@ -36,7 +36,7 @@ public class SudokuFrame extends JFrame implements ActionListener {
 	private MyTextField[][] boxes;
 
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Create a SudokuFrame with a connected {@link SudokuBoard}.
 	 * 
@@ -48,7 +48,7 @@ public class SudokuFrame extends JFrame implements ActionListener {
 	public SudokuFrame(SudokuBoard board) {
 		SwingUtilities.invokeLater(() -> createWindow(board));
 	}
-	
+
 	private void createWindow(SudokuBoard board) {
 		this.board = board;
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,9 +56,9 @@ public class SudokuFrame extends JFrame implements ActionListener {
 		this.setTitle("Sudoku Solver");
 		this.setIconImage(null);
 		this.setSize(500, 600);
-		
+
 		loadComponents();
-		
+
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -183,15 +183,17 @@ public class SudokuFrame extends JFrame implements ActionListener {
 						k = Integer.parseUnsignedInt(boxes[i][j].getText());
 					}
 
-					if (k > 9 || k < 0) {
+					if (k > 9 || k <= 0) {
 						System.err.println("oops!" + boxes[i][j].getText() + i + ":" + j);
-						String message = "Felaktig input " + boxes[i][j].getText() + " [" + i + ":" + j + "]! Skriv in en siffra i intervallet 1-9 !";
+						String message = "Felaktig input " + boxes[i][j].getText() + " [" + i + ":" + j
+								+ "]! Skriv in en siffra i intervallet 1-9 !";
 						JOptionPane.showMessageDialog(null, message, "Error input", JOptionPane.ERROR_MESSAGE);
 						return false;
 					}
 				} catch (Exception e) {
 					System.err.println("oops!" + boxes[i][j].getText() + i + ":" + j);
-					String message = "Felaktig input " + boxes[i][j].getText() + " [" + i + ":" + j + "]! Skriv in en siffra i intervallet 1-9 !";
+					String message = "Felaktig input " + boxes[i][j].getText() + " [" + i + ":" + j
+							+ "]! Skriv in en siffra i intervallet 1-9 !";
 					JOptionPane.showMessageDialog(null, message, "Error input", JOptionPane.ERROR_MESSAGE);
 
 					return false;
